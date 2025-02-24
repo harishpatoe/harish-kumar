@@ -1,19 +1,56 @@
-import React from 'react'
+import React from 'react';
+import { Button, Checkbox, Form, Input } from 'antd';
+const onFinish = (values) => {
+  console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
+const Login = () => (
+  
+  <div className="max-h-fit max-w-full border-2 border-black">
+      <h1 className='text-4xl py-5 text-center'>Login</h1>
+    <Form
+      // name="basic"
+      onFinish={onFinish}
+      // onFinishFailed={onFinishFailed}
+      // autoComplete="off"
+    >
 
+      {/* E-mail */}
+      <div className='mx-10'>
+        <Form.Item
+          label="E-mail"
+          name="E-mail"
+        >
+          <Input placeholder='Enter your E-mail'/>
+        </Form.Item>
+      </div>
 
-const Login = () => {
-  return (
-    <div>
-      <h1>Login</h1>
-      <form>
-        <label htmlFor="email">E-Mail</label>
-        <input type="email" id="email" name="email" placeholder='Enter E-Mail'/>
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" placeholder='Enter Password'/>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  )
-}
+      {/* Password */}
+      <div className='mx-10'>
+        <Form.Item
+          label="Password"
+          name="Password"
+        >
+          <Input.Password placeholder='Enter your Password'/>
+        </Form.Item>
+      </div>
 
-export default Login
+      {/* Checkbox */}
+      <div className='mx-10'>
+        <Form.Item name="Login" valuePropName="checked" label={null}>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+      </div>
+
+      {/* Login Button */}
+      <Form.Item label={null} className='w-full place-items-center'>
+        <Button type="primary" htmlType="Login" className='w-50'>
+          Login
+        </Button>
+      </Form.Item>
+    </Form>
+  </div>
+);
+export default Login;
