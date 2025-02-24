@@ -1,21 +1,28 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+
 const onFinish = (values) => {
   console.log('Success:', values);
 };
-// const onFinishFailed = (errorInfo) => {
-//   console.log('Failed:', errorInfo);
-// };
-const Login = () => (
+const Register = () => (
   
   <div className="max-h-fit max-w-full border-2 border-black">
-      <h1 className='text-4xl py-5 text-center'>Login</h1>
+      <h1 className='text-4xl py-5 text-center'>Register</h1>
     <Form
       // name="basic"
       onFinish={onFinish}
       // onFinishFailed={onFinishFailed}
       // autoComplete="off"
     >
+      {/* Username */}
+      <div className='mx-10'>
+        <Form.Item
+          label="Username"
+          name="Username"
+        >
+          <Input placeholder='Enter your Username'/>
+        </Form.Item>
+      </div>
 
       {/* E-mail */}
       <div className='mx-10'>
@@ -37,6 +44,16 @@ const Login = () => (
         </Form.Item>
       </div>
 
+      {/* Confirm Password */}
+      <div className='mx-10'>
+        <Form.Item
+          label=" Confirm Password"
+          name="Confirm Password"
+        >
+          <Input.Password placeholder='Enter your Confirm Password'/>
+        </Form.Item>
+      </div>
+
       {/* Checkbox */}
       <div className='mx-10'>
         <Form.Item name="Login" valuePropName="checked" label={null}>
@@ -44,13 +61,14 @@ const Login = () => (
         </Form.Item>
       </div>
 
-      {/* Login Button */}
+      {/* Register Button */}
       <Form.Item label={null} className='w-full place-items-center'>
-        <Button type="primary" htmlType="Login" className='w-50'>
-          Login
+        <Button type="primary" htmlType="Register" className='w-50'>
+          Register
         </Button>
       </Form.Item>
     </Form>
   </div>
 );
-export default Login;
+
+export default Register;
