@@ -7,12 +7,12 @@ import { useState } from 'react'
 const NU = () => {
   const [data, setData] = useState("");
 const handle =()=> {
-  setData('Hello World');
+  setData('Harish is good Person');
 }
 
 console.log(data);
   return(
-    <button onClick={(handle)}>Harivvansh</button>
+    <button onClick={(handle)} type='primary'>Harish</button>
   )
 }
 

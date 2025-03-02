@@ -2,12 +2,12 @@ import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 
 const onFinish = (values) => {
-  console.log('Success:', values);
+  console.log('Registered:', values);
 };
 const Register = () => (
   
-  <div className="max-h-fit max-w-full border-2 border-black">
-      <h1 className='text-4xl py-5 text-center'>Register</h1>
+  <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    <h1 className='text-4xl py-5 text-center'>Register</h1>
     <Form
       // name="basic"
       onFinish={onFinish}
@@ -33,6 +33,16 @@ const Register = () => (
           <Input placeholder='Enter your E-mail'/>
         </Form.Item>
       </div>
+      
+      {/* Mobile No. */}
+      <div className='mx-10'>
+        <Form.Item
+          label="Mobile No."
+          name="Mobile No."
+        >
+          <Input placeholder='Enter your Mobile No.'/>
+        </Form.Item>
+      </div>
 
       {/* Password */}
       <div className='mx-10'>
@@ -54,16 +64,23 @@ const Register = () => (
         </Form.Item>
       </div>
 
+      {/* Reset */}
+      <Form.Item label={null} className='w-full place-items-center'>
+        <Button type="link" htmlType="Reset?" className='w-full'>
+          Reset
+        </Button>
+      </Form.Item>
+
       {/* Checkbox */}
       <div className='mx-10'>
-        <Form.Item name="Login" valuePropName="checked" label={null}>
+        <Form.Item name="Registered" valuePropName="checked" label={null}>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
       </div>
 
       {/* Register Button */}
       <Form.Item label={null} className='w-full place-items-center'>
-        <Button type="primary" htmlType="Register" className='w-50'>
+        <Button type="primary" htmlType="Register" className='w-full'>
           Register
         </Button>
       </Form.Item>
