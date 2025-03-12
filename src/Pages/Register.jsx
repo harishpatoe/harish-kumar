@@ -1,16 +1,29 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
 
-const onFinish = (values) => {
-  console.log('Registered:', values);
-};
-const Register = () => (
+const Register = () => {
+const notify = () => toast.info("Wow so easy!", {
+  position: "top-right",
+});
+
+const onFinish = async (values) => {
+    console.log('Registered:', values);
+    try {
+      const res = await axios.post('http://localhost:3000/register', values);
   
+    } catch (error) {
+      
+    }
+    };
+  
+  return (
   <div className="flex flex-col items-center justify-center min-h-screen p-4">
     <div className="bg-white border-2 border-black rounded-lg shadow-md p-8">
         <h1 className='text-4xl py-5 text-center'>Register</h1>
       <Form
-        // name="basic"
+        name="basic"
         onFinish={onFinish}
         // onFinishFailed={onFinishFailed}
         // autoComplete="off"
@@ -65,13 +78,6 @@ const Register = () => (
           </Form.Item>
         </div>
 
-        {/* Reset */}
-        <Form.Item label={null} className='w-full place-items-center'>
-          <Button type="link" htmlType="Reset?" className='w-full'>
-            Reset
-          </Button>
-        </Form.Item>
-
         {/* Checkbox */}
         <div className='mx-10'>
           <Form.Item name="Registered" valuePropName="checked" label={null}>
@@ -79,15 +85,24 @@ const Register = () => (
           </Form.Item>
         </div>
 
+        {/* Reset */}
+        <Form.Item label={null} className='w-full place-items-center'>
+          <Button type="link" htmlType="Reset?" className='w-full'>
+            Reset
+          </Button>
+        </Form.Item>
+
         {/* Register Button */}
         <Form.Item label={null} className='w-full place-items-center'>
-          <Button type="primary" htmlType="Register" className='w-full'>
+          <Button onClick={notify} type="primary" htmlType="Register" className='w-full'>
             Register
           </Button>
+          <ToastContainer />
         </Form.Item>
       </Form>
     </div>
   </div>
-);
+)
+};
 
 export default Register;

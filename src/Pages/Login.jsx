@@ -39,6 +39,13 @@ const Login = () => (
           </Form.Item>
         </div>
   
+        {/* Checkbox */}
+        <div className='mx-10'>
+          <Form.Item name="Remember Me" valuePropName="checked" label={null}>
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+        </div>
+  
         {/* Register and Forget Password Button */}
           <Form.Item label={null} className='w-full'>
             <Button type="link" htmlType="Register" className='w-1/2'>
@@ -48,13 +55,6 @@ const Login = () => (
               Forget Password ?
             </Button>
           </Form.Item>
-  
-        {/* Checkbox */}
-        <div className='mx-10'>
-          <Form.Item name="Remember Me" valuePropName="checked" label={null}>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-        </div>
   
         {/* Login Button */}
         <Form.Item label={null} className='w-full place-items-center'>
