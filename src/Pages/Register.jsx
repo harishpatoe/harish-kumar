@@ -1,22 +1,26 @@
-import React from 'react';
+import React , { useState } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router';
 
 const Register = () => {
 const notify = () => toast.info("Wow so easy!", {
   position: "top-right",
 });
 
+const [registerData , setregisterData] = useState(null)
+
 const onFinish = async (values) => {
     console.log('Registered:', values);
     try {
-      const res = await axios.post('http://localhost:3000/register', values);
-  
+      const res = await axios.post('http://localhost:3000/api/auth/registration', values);
+        console.log(res.data);
+        setregisterData(res.data)
     } catch (error) {
-      
+      console.log(error);
     }
-    };
+  };
   
   return (
   <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -86,15 +90,18 @@ const onFinish = async (values) => {
         </div>
 
         {/* Reset */}
+        <Link to={"/login"}>
         <Form.Item label={null} className='w-full place-items-center'>
-          <Button type="link" htmlType="Reset?" className='w-full'>
+          <Button type="link" htmlType="Reset?" className='w-full' >
             Reset
           </Button>
         </Form.Item>
+        </Link>
+  
 
         {/* Register Button */}
         <Form.Item label={null} className='w-full place-items-center'>
-          <Button onClick={notify} type="primary" htmlType="Register" className='w-full'>
+          <Button  type="primary" htmlType="submit" className='w-full'>
             Register
           </Button>
           <ToastContainer />
